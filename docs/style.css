@@ -1,0 +1,87 @@
+/* Google Fonts 読み込み
+   → HTMLの<head>内に以下を追加してください
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+*/
+
+/* 全体設定 */
+body {
+    font-family: 'Noto Serif JP', serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #fffbea;  /* クリーム色背景 */
+    color: #2d2d2d;
+}
+
+/* ヘッダー */
+header {
+    background-color: #2d3e50;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;  /* 英字おしゃれ */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* メイン部分 */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fffdf5;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 見出し */
+h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: #2d2d2d;
+}
+
+h2 {
+    border-left: 6px solid #e0a106;
+    padding-left: 10px;
+}
+
+h3 {
+    margin-top: 1.5rem;
+    color: #444;
+}
+
+/* リスト */
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin: 0.4rem 0;
+}
+
+/* コード部分（教材風ダークテーマ） */
+pre {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+}
+
+code {
+    font-family: "Consolas", "Courier New", monospace;
+}
+
+/* シンタックスカラー */
+pre code {
+    color: #dcdcdc;
+}
+pre code .keyword { color: #569cd6; }
+pre code .string  { color: #ce9178; }
+pre code .number  { color: #b5cea8; }
+pre code .func    { color: #dcdcaa; }
+pre code .comment { color: #6a9955; }
