@@ -12,7 +12,7 @@ const player = {
     z3: 50
 };
 const bullets = [];
-const bulletspeed = 1;
+const bulletspeed = 6;
 
 function tryshoot() {
     bullets.push({ 
