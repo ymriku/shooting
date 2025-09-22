@@ -15,7 +15,7 @@ const player = {
 // 弾をプレイヤーの中央から発射するよう修正
 function tryshoot() {
     bullets.push({ 
-        x: player.x + player.width / 2 - 2.75, // 弾の幅(5.5)の半分で中央調整
+        x: player.x + player.width /2 - 2.75, // 弾の幅(5.5)の半分で中央調整
         y: player.y, 
         width: 5.5, 
         height: 5.5, 
