@@ -1,14 +1,15 @@
 import { player , initPlayer , drawPlayer} from './player.js';
-import { SpawnEnemy,emies } from './enemies.js';
+import { spawnEnemy, enemies } from './enemies.js';
 
     // ゲームの初期設定
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
     initPlayer(canvas);
-    SpawnEnemy(canvas);
+    spawnEnemy(canvas);
 
     // 定数
+    const ENEMY_SPEED = 2;
     const PLAYER_SPEED = 10;
     const BULLET_SPEED = 6;
     const BULLET_SIZE = 5.5;
@@ -58,18 +59,20 @@ import { SpawnEnemy,emies } from './enemies.js';
     });
 
     // ゲーム状態更新
-    function update() {}
+    function update() {
         // 弾の移動と画面外削除（後ろからループ）
         for (let i = bullets.length - 1; i >= 0; i--) {
             const b = bullets[i];
             b.y -= b.vy;
             if (b.y + b.height < 0) bullets.splice(i, 1);
         }
-        ctx.fillStyle = "red";
-        for (let i = enemies.length - 1; i >= 0; i++) {
+
+        // 敵の画面外チェック
+        for (let i = enemies.length - 1; i >= 0; i--) {
             const enemy = enemies[i];
-            if (enemy.y + enemy.height < 0) bullets.splice(i, 1);
+            if (enemy.y + enemy.height < 0) enemies.splice(i, 1);
         }
+    }
 
 
 
