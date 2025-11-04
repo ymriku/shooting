@@ -1,4 +1,3 @@
-
 import { player, initPlayer, drawPlayer } from "./player.js";
 import { spawnEnemy, updateEnemies, drawEnemies } from "./enemies.js";
 import { handleCollisions } from "./collision.js";
@@ -7,8 +6,6 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 initPlayer(canvas);
-spawnEnemy(canvas);
-
 
 export const bullets = [];
 const BULLET_SPEED = -5;
@@ -17,38 +14,41 @@ function tryShoot() {
     bullets.push({
         x: player.x + player.width / 2 - 2.5, // Center the bullet
         y: player.y,
-        y: player.y,
         width: 5,
         height: 5,
-        vy: BULLET_SPEED
+        vy: BULLET_SPEED,
+        h: Math.floor(Math.random() * 360) // 初期色相をランダムに
     })
 }
 
 
 window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-        if (player.x > 10) {
+    if(e.key === "ArrowLeft"){
+        if(player.x > 10){
             player.x -= 10;
         }
-    } else if (e.key === "ArrowRight") {
-        if (player.x < canvas.width - player.width - 10) {
+    } else if(e.key === "ArrowRight"){
+        if(player.x < canvas.width - player.width - 10){
             player.x += 10;
         }
-    } else if (e.key === " ") {
+    } else if(e.code === "Space"){
         tryShoot();
-    }
+    }      
 });
 
 function update() {
-    for (let i = 0; i < bullets.length; i++) {
+    for(let i = bullets.length - 1; i >= 0; i--){
         const bullet = bullets[i];
         bullet.y += bullet.vy;
-        if (bullet.y < 0) {
+        // 色相を進めて虹色にする
+        bullet.h = (bullet.h + 4) % 360;
+
+        if(bullet.y < 0){
             bullets.splice(i, 1);
         }
     }
     updateEnemies(canvas);
-    spawnEnemy(canvas);
+    
     handleCollisions();
 }
 
@@ -58,13 +58,17 @@ function draw() {
 
     drawPlayer(ctx);
 
-    ctx.fillStyle = "white";
-    for (let i = 0; i < bullets.length; i++) {
+    for(let i = bullets.length - 1; i >= 0; i--){
         const bullet = bullets[i];
+        // HSLで虹色に描画
+        ctx.fillStyle = `hsl(${bullet.h}, 90%, 60%)`;
         ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
     }
 
     drawEnemies(ctx);
+
+    spawnEnemy(canvas);
+
 }
 
 function gameLoop() {
