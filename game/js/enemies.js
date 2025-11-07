@@ -1,10 +1,10 @@
 export const enemies = [];
-const SIZE = 26;
-const enemyImages = [
-  'https://img21.shop-pro.jp/PA01380/519/etc/124_%C0%C4_3.jpg?cmsp_timestamp=20190124175618%20alt=',
-  'https://kotobank.jp/image/dictionary/daijisen/media/104677.jpg',
-  'https://www.tamura1753.jp/Color-Paper/wp-content/uploads/2022/07/%E8%8B%A5%E7%AB%B9%E3%80%80%E7%B4%80%E5%B7%9E%E3%81%AE%E8%89%B2%E4%B8%8A%E8%B3%AA.jpg',
-  'https://ascii.jp/img/2021/04/29/3195045/l/111575ae7ae580d7.jpg'
+const SIZE = 50;
+const enemyImages = 
+["https://m.media-amazon.com/images/I/41rnqZ6DpgL.CR116,0,375,375.jpg",
+ "https://renote.net/files/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MjI2NTUxMiwicHVyIjoiYmxvYl9pZCJ9fQ==--6fb6da8ba84db0859aa88a65ca84b870a633b420/orihime007.png",
+ "https://anibase.net/files/97daeb2e44bce700109d17ccb8466b58/320",
+ "https://images-na.ssl-images-amazon.com/images/I/61+1fgvrQKL._CR250,0,1200,1200_.jpg"
 ];
 
 function pushEnemies(canvas) {
