@@ -8,7 +8,7 @@ export const player = {
 };
 
 // 画像のソースを設定
-player.image.src = 'https://ami.animecharactersdatabase.com/uploads/chars/5457-637889691.png'; // 画像のパスを指定
+player.image.src = 'https://kotobank.jp/image/dictionary/daijisen/media/104818.jpg'; // 画像のパスを指定
 
 export function initPlayer(canvas) {
     player.x = (canvas.width / 2 - player.width) / 2;
