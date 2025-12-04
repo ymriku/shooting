@@ -6,11 +6,33 @@
         <link rel="stylesheet"href="style.css">
     </head>
     <body>
-    <div>
-        <canvas id="gameCanvas" width="480" height="640"></canvas>
-        <div id="scoreBoard">Score: 0</div>
-        <div id= "lifeBoard">life: 3</div>
-    </div>
+        <div class="game-wrap">
+                <canvas id="gameCanvas" width="480" height="640"></canvas>
+                <div id="scoreBoard">Score: 0</div>
+                <div id= "lifeBoard">life: 3</div>
+                <div id= "waveBoard">Wave: 0</div>
+
+                <!-- Overlays -->
+                <div id="menuOverlay" class="overlay visible">
+                    <h1>シューティングゲーム</h1>
+                      <button id="startBtn">ゲームスタート</button>
+                      <div id="menuBest">Best: 0</div>
+                      <p>矢印キーで移動、Spaceで射撃。Escでポーズ。</p>
+                </div>
+                        <!-- mobile controls removed per request -->
+
+                <div id="pausedOverlay" class="overlay hidden">
+                    <h2>一時停止</h2>
+                    <button id="resumeBtn">再開</button>
+                </div>
+
+                <div id="gameOverOverlay" class="overlay hidden">
+                    <h2>ゲームオーバー</h2>
+                    <div id="finalScore">Score: 0</div>
+                    <div id="bestScore">Best: 0</div>
+                    <button id="restartBtn">リトライ</button>
+                </div>
+        </div>
       <script type="module" src="js/main.js"></script>
     </body>
 </html>
