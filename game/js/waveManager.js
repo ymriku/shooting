@@ -1,18 +1,37 @@
 let wave = 0;
-let lastWaveAt = performance.now();
+let enemiesDefeated = 0; // 倒した敵の数をカウント
 
 export function updateWave() {
-  const now = performance.now();
-  // increase wave every 12 seconds
-  if (now - lastWaveAt > 12000) {
-    wave += 1;
-    lastWaveAt = now;
-    console.log('Wave ->', wave);
-  }
+  // updateWaveは時間ベースではなく、敵撃破ベースに変更
 }
 
+export function incrementEnemyCount() {
+  enemiesDefeated += 1;
+  // 10体倒すごとにウェーブを1増やす
+  if (enemiesDefeated % 10 === 0) {
+    wave += 1;
+    console.log('Wave ->', wave, '(Enemies Defeated:', enemiesDefeated, ')');
+    return true; // ウェーブが増えたことを返す
+  }
+  return false;
+}
+
+export function shouldSpawnBoss() {
+  // ウェーブ5と10の時にボスを出現させる
+  return wave === 5 || wave === 10;
+}
+
+
 export function getSpawnLimit() {
-  return 3 + Math.min(12, Math.floor(5 + wave * 0.8));
+  // ウェーブごとに敵を1体ずつ増やす（初期値3体 + ウェーブ×1）
+  return 3 + wave;
 }
 
 export function getCurrentWave() { return wave; }
+
+export function getEnemiesDefeated() { return enemiesDefeated; }
+
+export function resetWave() {
+  wave = 0;
+  enemiesDefeated = 0;
+}

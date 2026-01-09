@@ -3,21 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <title>シューティングゲーム</title>
-        <link rel="stylesheet"href="style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="game-wrap">
                 <canvas id="gameCanvas" width="480" height="640"></canvas>
                 <div id="scoreBoard">Score: 0</div>
-                <div id= "lifeBoard">life: 3</div>
-                <div id= "waveBoard">Wave: 0</div>
+                <div id="lifeBoard">life: 3</div>
+                <div id="waveBoard">Wave: 0</div>
 
                 <!-- Overlays -->
                 <div id="menuOverlay" class="overlay visible">
                     <h1>シューティングゲーム</h1>
-                      <button id="startBtn">ゲームスタート</button>
-                      <div id="menuBest">Best: 0</div>
-                      <p>矢印キーで移動、Spaceで射撃。Escでポーズ。</p>
+                    <div id="modeSelection" style="display: none;">
+                        <p style="margin-bottom: 30px; font-size: 18px;">ゲームモードを選択してください</p>
+                        <div style="display: flex; gap: 80px; justify-content: center; flex-wrap: wrap;">
+                            <button id="normalModeBtn" style="padding: 14px 28px; font-size: 16px; font-weight: 600;">ノーマルモード<br>（Wave10クリア）</button>
+                            <button id="infinityModeBtn" style="padding: 14px 28px; font-size: 16px; font-weight: 600;">インフィニティモード<br>（無限）</button>
+                        </div>
+                    </div>
+                    <div id="startMenu">
+                        <button id="startBtn">ゲームスタート</button>
+                        <div id="menuBest">Best: 0</div>
+                        <p>矢印キーで移動、Spaceで射撃。Escでポーズ。</p>
+                    </div>
                 </div>
                         <!-- mobile controls removed per request -->
 
@@ -31,6 +40,14 @@
                     <div id="finalScore">Score: 0</div>
                     <div id="bestScore">Best: 0</div>
                     <button id="restartBtn">リトライ</button>
+                </div>
+
+                <div id="gameClearOverlay" class="overlay hidden">
+                    <h1>🎉 GAME CLEAR 🎉</h1>
+                    <div id="clearWave">Wave 10 Completed!</div>
+                    <div id="clearScore">Score: 0</div>
+                    <div id="clearBestScore">Best: 0</div>
+                    <button id="clearRetryBtn">もう一度プレイ</button>
                 </div>
         </div>
       <script type="module" src="js/main.js"></script>

@@ -2,6 +2,7 @@ import { player } from "./player.js";
 import { enemies, enemyBullets, releaseEnemy } from "./enemies.js";
 import { bullets, releaseBullet, setGameOver } from "./main.js";
 import { spawnParticles } from "./particles.js";
+import { incrementEnemyCount } from "./waveManager.js";
 
 export function handleCollisions() {
   // 弾 × 敵
@@ -26,6 +27,7 @@ export function handleCollisions() {
         releaseEnemy(e);
         enemies.splice(ei, 1);
         player.score += 1;
+        incrementEnemyCount(); // ウェーブ進行をチェック
         console.log("Score:", player.score);
         hit = true;
         break; // この敵は消えたので次の敵へ
@@ -42,6 +44,13 @@ export function handleCollisions() {
       { x: player.x, y: player.y, width: player.width, height: player.height },
       { x: e.x, y: e.y, width: e.width, height: e.height }
     )) {
+      // 無敵状態ならダメージを受けない
+      if (player.invincible) {
+        releaseEnemy(e);
+        enemies.splice(ei, 1);
+        spawnParticles(player.x + player.width/2, player.y + player.height/2, 'gold', 8);
+        break;
+      }
       player.life -= 1;
       // audio removed
       spawnParticles(player.x + player.width/2, player.y + player.height/2, 'crimson', 12);
@@ -65,6 +74,12 @@ export function handleCollisions() {
       { x: player.x, y: player.y, width: player.width, height: player.height },
       { x: b.x, y: b.y, width: b.width, height: b.height }
     )) {
+      // 無敵状態ならダメージを受けない
+      if (player.invincible) {
+        enemyBullets.splice(bi, 1);
+        spawnParticles(player.x + player.width/2, player.y + player.height/2, 'gold', 5);
+        continue;
+      }
       // 被弾
       enemyBullets.splice(bi, 1);
       player.life -= 1;

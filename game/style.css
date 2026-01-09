@@ -120,3 +120,75 @@ canvas#gameCanvas:hover {
     font-weight: 700;
     letter-spacing: 2px;
 }
+
+/* Game Clear Overlay Styles */
+@keyframes slideInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotateZ(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#gameClearOverlay {
+    animation: slideInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(16, 185, 129, 0.9) 100%);
+    border: 2px solid rgba(74, 222, 128, 0.6);
+    box-shadow: 0 0 60px rgba(74, 222, 128, 0.4), inset 0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+#gameClearOverlay h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+    color: #ffd700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+#clearWave {
+    font-size: 24px;
+    margin: 15px 0;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#clearScore, #clearBestScore {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+#clearRetryBtn {
+    padding: 14px 32px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #1a1a2e;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#clearRetryBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+}
+
+#clearRetryBtn:active {
+    transform: translateY(-1px);
+}
